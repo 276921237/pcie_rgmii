@@ -1,0 +1,57 @@
+
+PIN "u_M6X/u_dcm/clkout5_buf.O" CLOCK_DEDICATED_ROUTE = FALSE;
+
+NET "user_clk" TNM_NET = "user_clk";
+TIMESPEC "TS_user_clk" = PERIOD "user_clk" 40 ns HIGH 50 %;
+NET "user_clk" LOC = AB13 | IOSTANDARD = LVCMOS33;
+NET "user_rst" LOC = Y13  | IOSTANDARD = LVCMOS33;
+
+NET "m6x_clk"  LOC = H12  | IOSTANDARD = LVCMOS33;
+NET "m6x_rst"  LOC = G22  | IOSTANDARD = LVCMOS33;
+
+##NET "uart_rx"  LOC = A4   | IOSTANDARD = LVCMOS33;
+##NET "uart_tx"  LOC = A3   | IOSTANDARD = LVCMOS33;
+NET "pps_in"   LOC = F22  | IOSTANDARD = LVCMOS33;
+NET "tod_in"   LOC = E22  | IOSTANDARD = LVCMOS33;
+
+NET "rgmii_rxclk" TNM_NET = "rgmii_rxclk";
+TIMESPEC "TS_rgmii_rxclk" = PERIOD "rgmii_rxclk" 8ns HIGH 50%;
+NET "rgmii_txclk" TNM_NET = "rgmii_txclk";
+TIMESPEC "TS_rgmii_txclk" = PERIOD "rgmii_txclk" 8ns HIGH 50%;
+INST "rgmii_txdv"   TNM = RGMII_TX;
+INST "rgmii_txd<0>" TNM = RGMII_TX;
+INST "rgmii_txd<1>" TNM = RGMII_TX;
+INST "rgmii_txd<2>" TNM = RGMII_TX;
+INST "rgmii_txd<3>" TNM = RGMII_TX;
+TIMEGRP "RGMII_TX" OFFSET = OUT 2 ns VALID 4ns BEFORE "rgmii_txclk" RISING; 
+TIMEGRP "RGMII_TX" OFFSET = OUT 2 ns VALID 4ns BEFORE "rgmii_txclk" FALLING;
+
+NET "rgmii_rxclk" 	LOC = E16	| IOSTANDARD = LVCMOS33 ;
+NET "rgmii_rxdv" 		LOC = C18	| IOSTANDARD = LVCMOS33 ;
+NET "rgmii_rxd[0]" 	LOC = A20	| IOSTANDARD = LVCMOS33 ;
+NET "rgmii_rxd[1]" 	LOC = C17	| IOSTANDARD = LVCMOS33 ;
+NET "rgmii_rxd[2]" 	LOC = F17	| IOSTANDARD = LVCMOS33 ;
+NET "rgmii_rxd[3]" 	LOC = G16	| IOSTANDARD = LVCMOS33 ; 
+NET "rgmii_txclk" 	LOC = F16	| IOSTANDARD = LVCMOS33 ;
+NET "rgmii_txdv" 		LOC = H10	| IOSTANDARD = LVCMOS33 ;
+NET "rgmii_txd[0]" 	LOC = A2 	| IOSTANDARD = LVCMOS33 ;
+NET "rgmii_txd[1]" 	LOC = B2 	| IOSTANDARD = LVCMOS33 ;
+NET "rgmii_txd[2]" 	LOC = D4 	| IOSTANDARD = LVCMOS33 ;
+NET "rgmii_txd[3]" 	LOC = D5	   | IOSTANDARD = LVCMOS33 ;
+
+NET "pcie_clk_p" 	LOC = A10 	 ;
+NET "pcie_clk_n" 	LOC = B10    ;
+NET "pci_txp" 		LOC = B6 	 ;
+NET "pci_txn" 		LOC = A6	    ;
+NET "pci_rxp" 		LOC = D7 	 ;
+NET "pci_rxn" 		LOC = C7	    ;
+NET "pcie_rst" TIG;
+NET "pcie_rst" NODELAY = "TRUE";
+NET "pcie_rst" LOC = B21;
+NET "pcie_rst" IOSTANDARD = LVCMOS33;
+NET "pcie_rst" PULLUP;
+
+NET "led[0]"  LOC = AA16 	| IOSTANDARD = LVCMOS33 ;
+NET "led[1]"  LOC = AB16 	| IOSTANDARD = LVCMOS33 ;
+NET "led[2]"  LOC = AB15 	| IOSTANDARD = LVCMOS33 ;
+NET "led[3]"  LOC = AB17	| IOSTANDARD = LVCMOS33 ;
